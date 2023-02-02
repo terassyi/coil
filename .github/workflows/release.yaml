@@ -42,13 +42,17 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Extract version
+        shell: bash
+        run: echo "tag=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
+        id: extract_version
       - name: Build and push
         uses: docker/build-push-action@v3
         with:
           context: ./v2
           platforms: linux/amd64,linux/arm64/v8
           push: true
-          tags: ghcr.io/terassyi/coil:${GITHUB_REF#refs/tags/v} # Remove "v" prefix.
+          tags: ghcr.io/terassyi/coil:${{ steps.extract_version.outputs.version }} # Remove "v" prefix.
           # tags: ghcr.io/terassyi/coil:2.2.6 # Remove "v" prefix.
   release:
     name: Release on GitHub

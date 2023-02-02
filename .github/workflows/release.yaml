@@ -34,17 +34,14 @@ jobs:
           key: cache-${{ env.cache-version }}-go-${{ env.go-version }}-${{ hashFiles('v2/Makefile') }}
       - run: make setup
         if: steps.cache-tools.outputs.cache-hit != 'true'
+      - run: echo ${GITHUB_REF}
+      - run: echo ${GITHUB_REF#refs/tags/v}
       - name: Login to GitHub Container Registry
         uses: docker/login-action@v2
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - name: test for tag
-        uses: ubuntu-20.04
-        steps:
-          - run: echo ${GITHUB_REF}
-          - run: echo ${GITHUB_REF#refs/tags/v}
       - name: Build and push
         uses: docker/build-push-action@v3
         with:

@@ -43,8 +43,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v3
         with:
-          context: .
-          file: v2/Dockerfile
+          context: ./v2
           platforms: linux/amd64,linux/arm64/v8
           push: true
           # tags: ghcr.io/terassyi/coil:${GITHUB_REF#refs/tags/v} # Remove "v" prefix.

@@ -147,10 +147,10 @@ $(CONTROLLER_GEN):
 	$(call go-get-tool,$(CONTROLLER_GEN),sigs.k8s.io/controller-tools/cmd/controller-gen@v$(CONTROLLER_TOOLS_VERSION))
 
 pkg/cnirpc/cni.pb.go: pkg/cnirpc/cni.proto
-	$(PROTOC) --go_out=module=github.com/cybozu-go/coil/v2:. $<
+	$(PROTOC) --go_out=module=github.com/terassyi/coil/v2:. $<
 
 pkg/cnirpc/cni_grpc.pb.go: pkg/cnirpc/cni.proto
-	$(PROTOC) --go-grpc_out=module=github.com/cybozu-go/coil/v2:. $<
+	$(PROTOC) --go-grpc_out=module=github.com/terassyi/coil/v2:. $<
 
 ../docs/cni-grpc.md: pkg/cnirpc/cni.proto
 	$(PROTOC) --doc_out=../docs --doc_opt=markdown,$@ $<
@@ -174,7 +174,7 @@ image: work/LICENSE
 
 .PHONY: push
 push: work/LICENSE
-	docker buildx build --no-cache --platform linux/amd64,linux/arm64/v8 --push -t ghcr.io/cybozu-go/coil:$(IMAGE_TAG) .
+	docker buildx build --no-cache --platform linux/amd64,linux/arm64/v8 --push -t ghcr.io/terassyi/coil:$(IMAGE_TAG) .
 
 .PHONY: setup
 setup:

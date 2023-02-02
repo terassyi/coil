@@ -1,7 +1,7 @@
 images:
 - name: coil
   newTag: 2.1.1
-  newName: ghcr.io/cybozu-go/coil
+  newName: ghcr.io/terassyi/coil
 
 resources:
 - config/default

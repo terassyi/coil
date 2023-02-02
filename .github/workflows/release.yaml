@@ -46,7 +46,8 @@ jobs:
           context: ./v2
           platforms: linux/amd64,linux/arm64/v8
           push: true
-          tags: ghcr.io/terassyi/coil:${GITHUB_REF#refs/tags/v} # Remove "v" prefix.
+          # tags: ghcr.io/terassyi/coil:${GITHUB_REF#refs/tags/v} # Remove "v" prefix.
+          tags: ghcr.io/terassyi/coil:2.2.6 # Remove "v" prefix.
   release:
     name: Release on GitHub
     needs: image

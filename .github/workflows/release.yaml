@@ -51,7 +51,7 @@ jobs:
           context: ./v2
           platforms: linux/amd64,linux/arm64/v8
           push: true
-          tags: ghcr.io/cybozu-go/coil:${{ steps.set-tag.outputs.RELEASE_TAG }}
+          tags: ghcr.io/terassyi/coil:${{ steps.set-tag.outputs.RELEASE_TAG }}
   release:
     name: Release on GitHub
     needs: image

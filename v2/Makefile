@@ -254,7 +254,7 @@ image: work/LICENSE
 
 .PHONY: push
 push: work/LICENSE
-	docker buildx build --no-cache --platform linux/amd64,linux/arm64/v8 --push -t ghcr.io/cybozu-go/coil:$(IMAGE_TAG) .
+	docker buildx build --no-cache --platform linux/amd64,linux/arm64/v8 --push -t ghcr.io/terassyi/coil:$(IMAGE_TAG) .
 
 .PHONY: setup
 setup:
